@@ -1,0 +1,10 @@
+name: Enhanced-Surival
+api: "1.0"
+version: '1.0'
+main: de.knacrack.enhancedsurvival.Main
+api-version: 1.18
+prefix: Alpha
+authors: [ Knacrack ]
+description: Server Plugin which enhances and extends the survival Gameplay of Minecraft
+website: knacrack.de
+  
