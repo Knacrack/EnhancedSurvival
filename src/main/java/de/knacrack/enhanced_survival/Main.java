@@ -1,9 +1,10 @@
-package de.knacrack.enhancedsurvival;
+package de.knacrack.enhanced_survival;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.knacrack.enhancedsurvival.listener.list.PlayerJoinListener;
+import de.knacrack.enhanced_survival.commands.list.HealCommand;
+import de.knacrack.enhanced_survival.listener.list.PlayerJoinListener;
 
 public class Main extends JavaPlugin {
 
@@ -14,7 +15,12 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        new PlayerJoinListener();
+
+        // Listener
+        initListener();
+
+        // Commands
+        initCommands();
     }
 
 
@@ -28,5 +34,17 @@ public class Main extends JavaPlugin {
 
     public static Main getInstance() {
         return instance;
+    }
+
+
+
+    private final void initCommands() {
+        new HealCommand().register();
+    }
+
+
+
+    private final void initListener() {
+        new PlayerJoinListener().register();
     }
 }

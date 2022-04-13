@@ -1,7 +1,7 @@
-name: Enhanced-Surival
+name: Enhanced-Survival
 api: "1.0"
 version: '1.0'
-main: de.knacrack.enhancedsurvival.Main
+main: de.knacrack.enhanced_survival.Main
 api-version: 1.18
 prefix: Alpha
 authors: [ Knacrack ]
