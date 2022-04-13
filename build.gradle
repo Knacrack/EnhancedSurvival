@@ -18,14 +18,10 @@ java {
 }
 
 repositories {
-    // Use Maven Central for resolving dependencies.
     mavenCentral()
     maven { url 'https://papermc.io/repo/repository/maven-public/' }
     maven {
 		url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
-
-    // As of Gradle 5.1, you can limit this to only those
-    // dependencies you expect from it
 		content {
 			includeGroup 'org.bukkit'
 			includeGroup 'org.spigotmc'
@@ -51,10 +47,15 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'de.knacrack.enhancedsurvival.Main'
+    mainClass = 'de.knacrack.enhanced_survival.Main'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+tasks.register('initSrcFolders') {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
 }

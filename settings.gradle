@@ -8,4 +8,3 @@
  */
 
 rootProject.name = 'EnhancedSurvival'
-include('enhanced-survival')
