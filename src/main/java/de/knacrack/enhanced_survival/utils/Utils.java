@@ -1,14 +1,17 @@
 package de.knacrack.enhanced_survival.utils;
 
+import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -18,6 +21,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 public class Utils {
+
+    public static File worldFolder = Bukkit.getWorlds().get(0).getWorldFolder();
+
+    public static File playerFolder = new File(Bukkit.getWorlds().get(0).getWorldFolder(), "players");
+
+
 
     public static double round(final double value, final int digits) {
         return Math.round(Math.pow(10.0, digits) * value) / Math.pow(10.0, digits);
@@ -117,9 +126,9 @@ public class Utils {
      * Try to find an entity on player's eyesight.
      *
      * @param player: target player (who should is performing this action?)
-     * @param range: range to search for entities | [range ∈ �? | 0.0 < range <= 1.0]
-     * @param offset: This variable controls the fine-tuning of searching for entities. Lower values means higher accuracy and more performance cost. [offset ∈ �? | 0.0 < offset <= 1.0]
-     * @param tolerance: How large should be the tolerance spectrum of failing to successfully hit the target? The tolerance should be higher than 0, but 0 is a valid input. [tolerance ∈ �? | tolerance >= 0.0]
+     * @param range: range to search for entities | [range ∈ �? | 0.0 < range <= 1.0]
+     * @param offset: This variable controls the fine-tuning of searching for entities. Lower values means higher accuracy and more performance cost. [offset ∈ �? | 0.0 < offset <= 1.0]
+     * @param tolerance: How large should be the tolerance spectrum of failing to successfully hit the target? The tolerance should be higher than 0, but 0 is a valid input. [tolerance ∈ �? | tolerance >= 0.0]
      * @param firstInTolerance: Should the first entity hit within tolerance be returned or the closest?
      * @param nearbyEntities: list of entities to check
      * @return
@@ -311,5 +320,17 @@ public class Utils {
 
         return state;
     }
+
+
+
+    public static void playSound(Player player, Sound sound) {
+        player.playSound(player.getLocation(), sound, 1f, 1f);
+    }
+
+    //    public static Player getOfflinePlayer(String name, UUID uuid) {
+    //        for (File file : playerFolder.listFiles()) {
+    //
+    //        }
+    //    }
 
 }

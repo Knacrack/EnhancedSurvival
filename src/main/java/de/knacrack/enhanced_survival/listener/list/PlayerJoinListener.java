@@ -5,7 +5,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import de.knacrack.enhanced_survival.listener.ListenerConstructor;
 
-public class PlayerJoinListener extends ListenerConstructor {
+public class PlayerJoinListener extends ListenerConstructor{
 
     public PlayerJoinListener() {
         super("PlayerJoinListener");

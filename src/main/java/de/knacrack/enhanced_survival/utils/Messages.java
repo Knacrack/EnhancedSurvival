@@ -16,8 +16,9 @@ public enum Messages {
     SELF_HEALING(4, "Du hast dich geheilt."),
     OTHER_HEALING(5, "Du Hast %p% geheilt."),
     YOU_CANT_DO_THAT(6, "Du kannst das nicht machen!"),
-    NO_PERMISSION(7, "Du hast keine Berechtigung f�r diese Aktion"),
-    PERMISSION_PREFIX(8, "de.enhanced_survival");
+    NO_PERMISSION(7, "Du hast keine Berechtigung für diese Aktion"),
+    PERMISSION_PREFIX(8, "de.enhanced_survival"),
+    CONSOLE_DO_PLAYER_STUFF(9, "Du musst ein Spieler sein um diesen Befehl ausführen zu können!");
 
 
 

@@ -53,35 +53,6 @@ public abstract class CommandConstructor extends AConstructor {
     public abstract List<String> onTabComplete(CommandSender commandSender, String[] arguments);
 
 
-
-    public final void register() {
-        CommandMap commandMap = Bukkit.getCommandMap();
-
-        Command command = new Command(this.label) {
-
-            @Override
-            public boolean execute(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String[] strings) {
-                performCommand(commandSender, strings);
-                return false;
-            }
-
-
-
-            @Override
-            public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args)
-                    throws IllegalArgumentException {
-                return onTabComplete(sender, args);
-            }
-        };
-
-        command.setAliases(this.aliases);
-        command.setPermission(this.permission);
-
-        commandMap.register("titan", command);
-    }
-
-
-
     /**
      * @return command's label
      */

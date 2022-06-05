@@ -11,12 +11,4 @@ public class ListenerConstructor extends AConstructor implements Listener {
     public ListenerConstructor(String name) {
         super(name);
     }
-
-
-
-    @Override
-    public void register() {
-        Bukkit.getPluginManager().registerEvents(this, Main.getInstance());
-    }
-
 }
