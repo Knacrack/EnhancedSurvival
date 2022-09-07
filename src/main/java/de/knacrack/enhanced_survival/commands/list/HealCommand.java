@@ -61,14 +61,16 @@ public class HealCommand extends CommandConstructor {
 
     @Override
     public List<String> onTabComplete(CommandSender commandSender, String[] arguments) {
-        if (!commandSender.hasPermission(getPermission()))
-            return Collections.emptyList();
-
-        if (arguments.length == 1) {
-            return getPlayers(arguments[0]);
+        List<String> list = Collections.emptyList();
+        if (arguments.length == 1 && commandSender.hasPermission(getPermission())) {
+            list = getPlayers(arguments[0]);
         }
+        return list;
+    }
 
-        return Collections.emptyList();
+    @Override
+    public boolean register() {
+        return true;
     }
 
 }

@@ -2,6 +2,7 @@ package de.knacrack.enhanced_survival.commands.list;
 
 import java.util.List;
 
+import de.knacrack.enhanced_survival.items.list.FruitOfGaia;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -32,4 +33,8 @@ public class ScytheCommand extends CommandConstructor {
         return null;
     }
 
+    @Override
+    public boolean register() {
+        return true;
+    }
 }

@@ -2,7 +2,7 @@ name: Enhanced-Survival
 api: "1.0"
 version: '1.0'
 main: de.knacrack.enhanced_survival.Main
-api-version: 1.18
+api-version: 1.19
 prefix: Alpha
 authors: [ Knacrack ]
 description: Server Plugin which enhances and extends the survival Gameplay of Minecraft

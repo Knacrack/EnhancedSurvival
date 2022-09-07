@@ -2,11 +2,12 @@ package de.knacrack.enhanced_survival.commands;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import de.knacrack.enhanced_survival.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -23,13 +24,14 @@ public abstract class CommandConstructor extends AConstructor {
 
     private final List<String> aliases;
 
-
+    private static final Logger log = Logger.getLogger(CommandConstructor.class.getSimpleName());
 
     public CommandConstructor(String label, String permission, List<String> aliases) {
         super(label);
         this.label = label;
         this.permission = permission;
         this.aliases = aliases;
+        registerCommand();
     }
 
 
@@ -70,6 +72,39 @@ public abstract class CommandConstructor extends AConstructor {
     }
 
 
+    public abstract boolean register();
+
+
+
+    private void registerCommand() {
+        if (register()){
+            log.info("Register Command: " + getClass().getSimpleName());
+
+            Command command = new Command(getLabel()) {
+
+                @Override
+                public boolean execute(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String[] strings) {
+                    performCommand(commandSender, strings);
+                    return false;
+                }
+
+
+
+                @Override
+                public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args)
+                        throws IllegalArgumentException {
+                    return onTabComplete(sender, args);
+                }
+            };
+
+            command.setAliases(getAliases());
+            command.setPermission(getPermission());
+
+            Bukkit.getCommandMap().register("enhanced-survival", command);
+        }
+    }
+
+
 
     /**
      * @return command's aliases
@@ -89,10 +124,19 @@ public abstract class CommandConstructor extends AConstructor {
         List<Player> players = Bukkit.getOnlinePlayers().stream().filter(player -> player.getName().startsWith(argument)).collect(Collectors.toList());
         List<String> names = Lists.newArrayList();
 
-        if (players.isEmpty())
-            return names;
+        if (!players.isEmpty()){
+            players.forEach(player -> names.add(player.getName()));
+        }
+        return names;
+    }
 
-        players.forEach(player -> names.add(player.getName()));
+    public final List<String> getCustomItems(String argument) {
+        List<String> collect = Main.getCustomItems().stream().map(c -> c.getKey().getKey()).filter(f -> f.startsWith(argument)).collect(Collectors.toList());
+        List<String> names = Lists.newArrayList();
+
+        if(!collect.isEmpty()) {
+            collect.stream().forEach(a -> names.add(a));
+        }
         return names;
     }
 }

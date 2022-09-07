@@ -4,6 +4,9 @@
 *.iml
 *.ipr
 *.iws
+*.eml
+
+.settings/
 
 # IntelliJ
 out/

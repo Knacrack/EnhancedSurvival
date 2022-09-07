@@ -3,6 +3,7 @@ package de.knacrack.enhanced_survival.items.list;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import de.knacrack.enhanced_survival.items.IItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -21,7 +22,6 @@ import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
 import de.knacrack.enhanced_survival.Main;
-import de.knacrack.enhanced_survival.items.itemapi.IItem;
 import de.knacrack.enhanced_survival.utils.ItemAPI;
 
 public class Scythe implements IItem, Listener {
